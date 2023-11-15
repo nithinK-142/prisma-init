@@ -17,11 +17,11 @@ async function createUser() {
 async function createArticle() {
   const article = await prisma.article.create({
     data: {
-      title: "John Doe Article",
-      body: "Prisma initialization",
+      title: "John Smith Article 2",
+      body: " Article 2 by John Smith",
       author: {
         connect: {
-          id: 1,
+          id: 2,
         },
       },
     },
@@ -55,12 +55,59 @@ async function getDetails(type: "user" | "article") {
   console.log(details);
 }
 
+async function getArticleWithUser() {
+  const users = await prisma.user.findMany({
+    include: {
+      articles: true,
+    },
+  });
+
+  users.forEach((user) => {
+    console.log(`User: `, user.name);
+    console.log(`email: `, user.email);
+    if (user.articles.length !== 0) {
+      console.log("\nArticles");
+      user.articles.forEach((article) => {
+        console.log(`- Title: `, article.title);
+        console.log(`- Body: `, article.body, "\n");
+      });
+    } else {
+      console.log("No articles by ", user.name);
+    }
+    console.log("-----------------------------");
+  });
+}
+
+async function updateData() {
+  const users = await prisma.user.update({
+    where: {
+      id: 3,
+    },
+    data: {
+      name: "John Smith.",
+    },
+  });
+  console.log(users);
+}
+
+async function removeData() {
+  const articles = await prisma.article.delete({
+    where: {
+      id: 3,
+    },
+  });
+  getDetails("article");
+}
+
 async function main() {
   // createUser();
   // createArticle();
-  getDetails("user");
-  getDetails("article");
+  // getDetails("user");
+  // getDetails("article");
   // createUserArticle();
+  // getArticleWithUser();
+  // updateData();
+  removeData();
 }
 
 main()
