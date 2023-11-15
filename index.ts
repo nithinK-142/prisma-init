@@ -55,6 +55,7 @@ async function getDetails(type: "user" | "article") {
   console.log(details);
 }
 
+// get article associated with each user
 async function getArticleWithUser() {
   const users = await prisma.user.findMany({
     include: {
@@ -78,6 +79,7 @@ async function getArticleWithUser() {
   });
 }
 
+// update data
 async function updateData() {
   const users = await prisma.user.update({
     where: {
@@ -90,6 +92,7 @@ async function updateData() {
   console.log(users);
 }
 
+// remove data
 async function removeData() {
   const articles = await prisma.article.delete({
     where: {
@@ -100,13 +103,26 @@ async function removeData() {
 }
 
 async function main() {
-  // createUser();
-  // createArticle();
-  // getDetails("user");
-  // getDetails("article");
-  // createUserArticle();
-  // getArticleWithUser();
-  // updateData();
+  // create user
+  createUser();
+
+  // create article
+  createArticle();
+
+  // create user and article
+  createUserArticle();
+
+  // get all users and articles
+  getDetails("user");
+  getDetails("article");
+
+  // get article associated with each user
+  getArticleWithUser();
+
+  // update data
+  updateData();
+
+  // remove data
   removeData();
 }
 
