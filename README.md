@@ -1,54 +1,68 @@
-# Prisma usage
+# Prisma init
 
-## Prerequistes
+A simple demo of CRUD operations using Prisma and SQLite.
 
-- database(sqlite, postgres, mongodb etc)
-- tsc
+### Prerequisites:
 
-## Packages
-- typescript
-- ts-node
-- @types/node
-- prisma
+1. **Database:** You need to have a database installed. The example uses SQLite also Postgres, MongoDB, etc can be used.
 
-## Project Setup
+2. **tsc (TypeScript Compiler):** Ensure that TypeScript and ts-node are installed globally or as project dependencies.
 
-```sh
-npm init -y
-```
+### Dependencies:
 
-```sh
-npm i typescript ts-node @types/node -D
-```
+- **typescript:** The primary package for working with TypeScript.
+- **ts-node:** TypeScript execution and REPL for Node.js.
+- **@types/node:** TypeScript definition files for Node.js.
+- **prisma:** The Prisma ORM (Object-Relational Mapping) library.
 
-```sh
-npx tsc --init
-```
+### Project Setup:
 
-```sh
-npm i prisma
-```
+1. **Initialize npm:**
+   ```sh
+   npm init -y
+   ```
 
-## Prisma Initialization
+2. **Install Dependencies:**
+   ```sh
+   npm install typescript ts-node @types/node -D
+   ```
 
-```sh
-npx prisma --datasource-provider sqlite
-```
+3. **Initialize TypeScript Configuration:**
+   ```sh
+   npx tsc --init
+   ```
 
-## After defining models in schema.prisma run
+4. **Install Prisma:**
+   ```sh
+   npm install prisma
+   ```
 
-```sh
-npx prisma migrate dev --name init
-```
+### Prisma Initialization:
 
-### Run index.ts
+- **Generate Prisma Configuration:**
+  ```sh
+  npx prisma --datasource-provider sqlite
+  ```
+  sqlite - database provider
 
-```sh
-npx ts-node index.ts
-```
+### Database Migration:
 
-### Prisma Studio (GUI)
+- **Run Migrations:**
+  ```sh
+  npx prisma migrate dev --name init
+  ```
+  init - name of migration
 
-```sh
-npx prisma studio
-```
+### Run TypeScript Code:
+
+- **Run index.ts:**
+  ```sh
+  npx ts-node index.ts
+  ```
+
+### Prisma Studio (GUI):
+
+- **Open Prisma Studio:**
+  ```sh
+  npx prisma studio
+  ```
