@@ -47,7 +47,7 @@ A simple demo of CRUD operations using Prisma and SQLite.
 
 ### Database Migration:
 
-- **Run Migrations:**
+- **Run Migrations after defining Models in schema.prisma:**
   ```sh
   npx prisma migrate dev --name init
   ```
@@ -59,6 +59,7 @@ A simple demo of CRUD operations using Prisma and SQLite.
   ```sh
   npx ts-node index.ts
   ```
+  PS - comment other functions while using the one you want.
 
 ### Prisma Studio (GUI):
 
